@@ -1,0 +1,26 @@
+Hardware
+========
+
+Z80 at 3.5Mhz
+
+0000-8000 		Cartridge ROM
+
+		0000-0200 		Boot and other vectors, start up, interrupt vector
+		0200-0800 		UDG (ROM Based) 64-255
+		0800-8000 		Code and data
+
+8000-8800 		Standard RAM
+
+		8000-8300	Character memory (Character code 0-255)
+		8300-8400	UDG / User RAM (0-31)
+		8400-8700 	Attribute memory (xBPPPIII as Speccy but no Flash)
+		8700-8800	UDG / User RAM (32-63)
+
+8800-FFFF 		(Expansion RAM)
+
+Port $FE (only, though technically any even port)
+
+- Beeper
+- Sinclair Joystick
+- Sinclair keyboard
+
