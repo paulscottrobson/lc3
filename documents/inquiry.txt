@@ -1,0 +1,87 @@
+
+	Good morning.
+
+	Annually or Bi-Annually there is an online "Retrochallenge" ; which is a month where those of us who enjoy working with old technology do something with it. For this October's I would like to recreate, as far as I can , the Sinclair LC3. I have brought to life via software several machines in the past, including the Cambridge origin machines the Camputers Lynx, the Jupiter Ace and the Science of Cambridge MK14 (hearing about the latter caused Sir Clive Sinclair to say it was "madder and madder" I'm informed). There's a fair amount of digging and guesswork involved, or there was in the past, because the documentation in many cases hadn't been found then, and you are reverse engineering ROM dumps and the like. 
+
+	I appreciate there is little or no documentation about this system. However, it can still sometimes be done, with some intelligent guesswork and additional information. I have been giving some thought on how a system might physically work. I would be grateful for any comments or insights or answers to specific questions you can provide. I appreciate with the passage of time specific details (e.g. the attribute layout) may be lost.
+
+	Z80 CPU
+	-------
+
+	Question : operating at 3.5Mhz ? Likely perhaps but not impossible it could be 7Mhz ?
+
+	Display/Memory
+	--------------
+	Question : what is the display size ?
+
+	I considered the best bet be that the display matrix size was 32x24 as with the Sinclair Spectrum. 40x24 is a possibility, as is 32x16, though I discounted the latter because the screen would look pretty empty on a PAL display with 262 display lines (allowing for interlacing). This would occupy 768 bytes.
+
+	Question : how do the colour/attributes work ?
+
+	I assume perhaps wrongly 1 byte per attribute.  (This could have a programming advantage in that you could flip between character ram and colour ram by toggling one bit in the address e.g. SET x,H or RES x,H)
+
+	I wondered if purely as a memory saving device the character byte might be 6 bits of character and 2 bits selecting a colour from a palette, but this would limit the machine quite a lot while freeing up memory. A likely candidate for attributes was the Sinclair's original pattern of Flash/Bright/Paperx3/Inkx3. This too would occupy 768 bytes. 
+
+	This could be halved to have a foreground and a fixed background ?
+
+	Question : are the character definitions in the ROM, the RAM or both ?
+
+	A problem arises with the memory which is supposed to be limited and cheap with 1983 technology. If they above are correct, this already accounts for 1.5k RAM.
+
+	Assuming Sir Clive's "2 chip" comment wasn't strictly accurate (the bare minimum count would surely be four - RAM, ROM, Z80 and ULA, though the ROM OS could go on every cartridge if small enough which would make three in the base hardware).
+
+	I could find 3 feasible options. A 6116 2kx8 static RAM, a set of 4027 4kx1 DRams and a set of 4116 16kx1 DRAMs (possibly used as 8k, repeating the 'broken chip' trick used on Spectrum Lower RAM.). In consumer prices (April 83) these come out at £4, £12, and £4 respectively. 
+
+	With 8k/16k DRAM space is not an issue but it doesn't fit the descriptions of small amounts of memory. With the 2k Static RAM it is something of a squeeze ; one has 512 bytes left over which is split between data memory and character definitions.  Having these in RAM is advantageous for the sprites-by-bitshifting approach used in the Vic20.
+
+	Possibly both could be used, as font graphics wouldn't change, so 192 characters could come from ROM and the remaining 64 from RAM ?
+
+	Another problem with the 2k SRAM is that there's no memory for the BASIC interpreter which was apparently partly (?) written so may have had on cartridge RAM ? Or there could have been a global monochrome setting ?
+
+	I think the RAM would be fast enough to fetch char, attribute and pixels from RAM at 150ns, though it would introduce more wait states than the Spectrum screen memory does.
+
+	ROM
+	---
+	Question : how big could cartridges be ?
+
+	The ROM is likely booting from address $0000 (some designs I've seen hack A15 and things like that ...). The cartridge size on the Interface 2 was 16k maximum, it may be that the first 32k would have been allocated to ROM.
+
+	Sound
+	-----
+	Question : what sound did it have ?
+
+	Four options spring to mind :
+
+	1) Not finalised at the time the project ended
+	2) Digital Beeper as with the Spectrum
+	3) R/2R D/A ladder with a latch in the ULA
+	4) Latch/Preset Counter type designs in the ULA
+
+	The last one struck me as possibly problematic in terms of the space available in the ULA.
+
+	Others
+	------
+	Question : Border colour, and Cassette I/O. 
+
+	It struck me that the simplest approach might be to use something that already worked, hence the port at $FE would be xxx/Ear/Mic/Background colour as on the Spectrum as the LC3 was going to have the ability to tape save/load. (This hardware could have been on the BASIC Cartridge and perhaps should have been to minimise cost)
+
+	Question : Input Devices
+
+	No information is available on this, but the same approach would suggest a joystick could be mapped onto port $F7FE - and possibly the same keyboard input used.
+
+
+	Many thanks for any help you can provide.
+
+	Yours sincerely,
+
+	Paul Robson
+	paul@robsons.org.uk
+	September 2023.
+
+
+Sent to :
+	Martin Brennan 28/09/23
+
+Request for assistance to:
+	Steven Berry 28/09/23
+		
