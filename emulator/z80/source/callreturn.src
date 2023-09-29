@@ -29,34 +29,10 @@ C0 		"RET @test" 5
 		RETURN(TEST@test())		
 
 #
-# 		Restarts are done this way beause I'm going to mangle them.
+# 		Restarts
 #		
-C7 		"RST $00" 11
-		PUSH(PC);PC = 0x00;
-
-CF 		"RST $08" 11
-		PUSH(PC);PC = 0x08;
-
-D7 		"RST $10" 11
-		PUSH(PC);PC = 0x10;
-
-DF 		"RST $18" 11
-		PUSH(PC);PC = 0x18;
-
-#
-# 		RST20 reports errors, so we stop spooling if an error occurred.
-#
-E7 		"RST $20" 11
-		PUSH(PC);PC = 0x20;
-
-EF 		"RST $28" 11
-		PUSH(PC);PC = 0x28;
-
-F7 		"RST $30" 11
-		PUSH(PC);PC = 0x30;
-
-FF 		"RST $38" 11
-		PUSH(PC);PC = 0x38;
+C7 		"RST $@reset" 11
+		PUSH(PC);PC = 0x@reset;
 
 #
 # 		Semi functional interrupt returns.
