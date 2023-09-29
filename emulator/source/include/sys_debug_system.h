@@ -24,7 +24,7 @@
 //							These functions need to be implemented by the dependent debugger.
 // *******************************************************************************************************************************
 
-#define DEBUG_ARGUMENTS(ac,av) { if (ac >= 2) CPULoadBinary(argv[1]); }
+#define DEBUG_ARGUMENTS(ac,av) { if (ac >= 2) CPULoadBinary(argc,argv); }
 
 #define DEBUG_CPURENDER(x) 	DBGXRender(x,0)											// Render the debugging display
 #define DEBUG_VDURENDER(x)	DBGXRender(x,1)											// Render the game display etc.

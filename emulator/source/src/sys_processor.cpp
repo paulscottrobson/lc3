@@ -211,7 +211,8 @@ void CPUEndRun(void) {
 	fclose(f);
 }
 
-void CPULoadBinary(char *fileName) {
+void CPULoadBinary(int argc,char *argv[]) {
+
 	// FILE *f = fopen(fileName,"rb");
 	// BYTE8 *romSpace = CPUGetUpper8kAddress();
 	// for (int i = 0;i < 0x4000;i++) romSpace[i] = 0;

@@ -21,10 +21,9 @@ run: emulator
 debug: emulator 
 	.$(S)$(APPNAME) 
 		
-
 emulator: prebuild $(APPNAME)
 	$(CCOPY) $(APPNAME) $(BINDIR)
-	
+
 prebuild:
 	make -C ..$(S)z80
 	$(CCOPY) ..$(S)z80$(S)code$(S)*.h cpu

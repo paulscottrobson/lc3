@@ -45,7 +45,7 @@ CPUSTATUS *CPUGetStatus(void);
 int CPUExecute(WORD16 breakPoint1,WORD16 breakPoint2);
 WORD16 CPUGetStepOverBreakpoint(void);
 void CPUEndRun(void);
-void CPULoadBinary(char *fileName);
+void CPULoadBinary(int argc,char *argv[]);
 void CPUExit(void);
 
 #endif
