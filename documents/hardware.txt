@@ -31,3 +31,11 @@ Hardware (other)
 - Sinclair Joystick (standard Sinclair)
 - Sinclair keyboard (not the keyword thing ?)
 
+RAM Options
+===========
+
+2 x 2114		£1.80 		(1k x 8 SRAM)
+1 x 6116 		£3.60 		(2k x 8 SRAM)
+8 x 4027 		£7.60 		(4k x 8 DRAM)
+8 x 4116 		£6.80 		(16k x 1 DRAM)
+
